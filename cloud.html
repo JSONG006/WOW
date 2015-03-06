@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/mycss.css" rel="stylesheet">
+    <script src="js/jquery-2.1.1.min.js"></script>
+  	<script src="js/jquery.spritely.js"></script>
+  	<script>
+	window.onload=function()
+	{
+		$('#cloud').pan({fps:30, speed:2, dir:'left'});
+		$('img').fadeOut(1000);
+		var oCloud = document.getElementById('cloud');
+		var oUl = oCloud.getElementsByTagName('ul')[0];
+		var aLi = oUl.getElementsByTagName('li');
+		var timer = null;
+		oUl.innerHTML+=oUl.innerHTML;
+		oUl.style.width=aLi.length*aLi[0].offsetWidth+'px';
+		clearInterval(timer);
+		timer = setInterval(function(){
+		if(oUl.offsetLeft<-oUl.offsetWidth/2)
+		{
+			oUl.style.left = 0;
+		}
+		oUl.style.left = oUl.offsetLeft-8+'px';
+		$('img:odd').fadeOut(3500).delay(1300).fadeIn(2500);
+		$('img:even').fadeOut(1900).fadeIn(2600).delay(2000);
+		
+		
+		}, 30);	
+	};		
+	</script>
+  </head>
+  <body>
+  		<div id="cloud">
+                <ul>
+                	<li>
+                    	<img src="img/picture1.png">
+                    </li>
+                    <li>
+                    	<img src="img/picture1.png">
+                    </li>
+                    <li>
+                    	<img src="img/picture1.png">
+                    </li>
+                    <li>
+                    	<img src="img/picture1.png">
+                    </li>
+                </ul>
+		</div>
+  </body>
+</html>
